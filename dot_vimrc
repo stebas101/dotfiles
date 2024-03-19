@@ -95,7 +95,7 @@ set mouse=a
 
 " color scheme
 syntax on
-colorscheme sorbet
+colorscheme torte
 filetype on
 filetype plugin indent on
 
