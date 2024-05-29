@@ -34,7 +34,7 @@ Plug 'yggdroot/indentline'
 " Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
-Plug 'klen/python-mode'
+Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim'
 Plug 'preservim/vim-markdown'
 Plug 'lepture/vim-jinja'
