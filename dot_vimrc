@@ -13,18 +13,23 @@ Plug 'tpope/vim-fugitive'           "Git wrapper
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'       "shows git diff in the sign column
 Plug 'itchyny/lightline.vim'        "lightline Status Bar
+Plug 'ap/vim-buftabline'            "Tab line - to use with lightline
+" Plug 'vim-airline/vim-airline'      "Airline status bar
 " Plug 'joshdick/onedark.vim'
-Plug 'ap/vim-buftabline'
 Plug 'preservim/nerdtree'           "NerdTree file navigator
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dense-analysis/ale'           "checks syntax asyncronously
+" Plug 'scrooloose/syntastic'         "alternative to ale
 " Plug 'majutsushi/tagbar'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'yggdroot/indentline'
 Plug 'vim-scripts/indentpython.vim'
+" Plug 'klen/python-mode'
 Plug 'lepture/vim-jinja'
 Plug 'pangloss/vim-javascript'      "javascript indentation and syntax support
-Plug 'preservim/vim-markdown'
 Plug 'alvan/vim-closetag'           "closes html tags
+Plug 'preservim/vim-markdown'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -39,27 +44,30 @@ if need_to_install_plugins == 1
     q
 endif
 
-" key mappings
+" ------------
+"  Appearance
+" ------------
 
-" always show the status bar
-set laststatus=2
-
-" enable 256 colors
-set t_Co=256
+filetype plugin indent on
+filetype on
+syntax on
+set laststatus=2    "always show the status bar
+set t_Co=256        "enable 256 colors
 set t_ut=
-
-" turn on line numbering
 set number
+colorscheme torte
 
-" toggle relative numbering
-nnoremap <leader>r :set relativenumber!<CR>
+" set updatetime=100
+" set signcolumn
 
-" sane text files
+" -------------------
+"  Files and Editing
+" -------------------
+
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 
-" sane editing
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -70,12 +78,19 @@ autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-" auto-pairs
+" Auto-pairs
 au FileType python let b:AutoPairs = AutoPairsDefine({
                 \ "f'" : "'",
                 \ "r'" : "'",
                 \ "b'" : "'"
                 \ })
+
+" ------------
+" key mappings
+" ------------
+
+" toggle relative numbering
+nnoremap <silent><leader>r :set relativenumber!<CR>
 
 " word movement
 imap <S-Left> <Esc>bi
@@ -93,15 +108,6 @@ vnoremap <S-Tab> <gv
 " mouse
 set mouse=a
 
-" color scheme
-syntax on
-colorscheme torte
-filetype on
-filetype plugin indent on
-
-" lightline
-set noshowmode
-let g:lightline = { 'colorscheme': 'default' }
 
 " code folding
 set foldmethod=indent
@@ -157,9 +163,6 @@ nmap <leader>x :bp<bar>bd#<CR>
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " file browser
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let NERDTreeMinimalUI = 1
-let g:nerdtree_open = 0
 noremap <leader>n :NERDTreeToggle<CR>
 
 " ale
@@ -179,3 +182,16 @@ imap <C-v> <ESC>"*pa
 " source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
+
+" -----------------
+"  Plugin Settings
+" -----------------
+
+" lightline
+set noshowmode
+let g:lightline = { 'colorscheme': 'default' }
+
+" NerdTree
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeMinimalUI = 1
+let g:nerdtree_open = 0

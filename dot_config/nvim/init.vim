@@ -21,24 +21,28 @@ call plug#begin()
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'         "comment out lines with gcc
+Plug 'tpope/vim-fugitive'           "Git wrapper
 Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'       "shows git diff in the sign column
+" Plug 'itchyny/lightline.vim'        "lightline status bar
+" Plug 'ap/vim-buftabline'            "Tab line - to use with light line
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'dense-analysis/ale'
 Plug 'scrooloose/syntastic'
+" Plug 'majutsushi/tagbar'
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'yggdroot/indentline'
-" Plug 'dense-analysis/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
-Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim'
-Plug 'preservim/vim-markdown'
+Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'lepture/vim-jinja'
 Plug 'pangloss/vim-javascript'
+Plug 'alvan/vim-closetag'           "closes html tags
+Plug 'preservim/vim-markdown'
+" Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " You can revert the settings after the call like so:
@@ -47,12 +51,15 @@ call plug#end()
 
 " TODO: python, folding, shada
 
-" Appearance
+" ------------
+"  Appearance
+" ------------
+
 filetype plugin indent on
 filetype on
 syntax on
-set laststatus=2
-set t_Co=256
+set laststatus=2    "always show the status bar
+set t_Co=256        "enable 256 colours
 set t_ut=
 set number
 colorscheme evening
@@ -60,12 +67,14 @@ colorscheme evening
 set updatetime=100
 " set signcolumn 
 
-" Fileformat
+" -------------------
+"  Files and Editing
+" -------------------
+
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Tabs and Editing
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -76,6 +85,13 @@ autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType jinja.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Auto-pairs
+au FileType python let b:AutoPairs = AutoPairsDefine({
+                \ "f'" : "'",
+                \ "r'" : "'",
+                \ "b'" : "'"
+                \ })
 
 " --------------
 "  Key Mappings
@@ -128,12 +144,6 @@ endfunction
 "  Plugin Settings
 " -----------------
 
-" auto-pairs
-au FileType python let b:AutoPairs = AutoPairsDefine({
-                \ "f'" : "'",
-                \ "r'" : "'",
-                \ "b'" : "'"
-                \ })
 
 " Airline
 let g:airline_powerline_fonts = 1
