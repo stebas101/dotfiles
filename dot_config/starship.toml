@@ -284,7 +284,7 @@ format = '[ $symbol ($version) ]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "fg:#11111b bg:#f0c6c6"
-format = '[ ⏰ $time ]($style)'
+format = '[ 󱑍 $time ]($style)'
 
 [username]
 show_always = true
