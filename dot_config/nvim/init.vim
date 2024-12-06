@@ -37,7 +37,7 @@ Plug 'scrooloose/syntastic'
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'yggdroot/indentline'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'klen/python-mode', { 'for': 'python' }
+" Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'lepture/vim-jinja'
 Plug 'pangloss/vim-javascript'
 Plug 'alvan/vim-closetag'           "closes html tags
