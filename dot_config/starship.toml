@@ -159,6 +159,7 @@ format = '[ $symbol ($version) ]($style)'
 [kotlin]
 symbol = " "
 style = "fg:#11111b bg:#7dc4e4"
+format = '[ $symbol ($version) ]($style)'
 
 [lua]
 symbol = " "
